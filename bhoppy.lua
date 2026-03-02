@@ -170,7 +170,7 @@ local function process(dt)
     if not scriptEnabled then
         humanoid.WalkSpeed = 16
         humanoid.JumpPower = 50
-    return
+        return
     end
 
     humanoid.WalkSpeed = 0
