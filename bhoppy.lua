@@ -95,13 +95,6 @@ local function playLand()
 end
 
 local isMobile = UserInputService.TouchEnabled and not UserInputService.KeyboardEnabled
-local gameModes = {}
-
-if isMobile then
-    gameModes = {"default (mobile)", "no grenades (mobile)", "hard (mobile)"}
-else
-    gameModes = {"default (PC)", "no grenades (PC)", "hard (PC)"}
-end
 
 local currentModeIndex = 1
 
@@ -135,19 +128,6 @@ local function createGui()
         scriptEnabled = not scriptEnabled
         toggle.Text = scriptEnabled and "ON" or "OFF"
         toggle.BackgroundColor3 = scriptEnabled and Color3.fromRGB(80, 255, 130) or Color3.fromRGB(255, 60, 60)
-    end)
-
-    local modeButton = Instance.new("TextButton", g)
-    modeButton.Size = UDim2.new(0, 150, 0, 30)
-    modeButton.Position = UDim2.new(0, 10, 1, -50)
-    modeButton.BackgroundColor3 = Color3.fromRGB(100, 150, 255)
-    modeButton.Text = "Mode: " .. gameModes[currentModeIndex]
-    modeButton.TextScaled = true
-
-    modeButton.MouseButton1Click:Connect(function()
-        currentModeIndex = currentModeIndex + 1
-        if currentModeIndex > #gameModes then currentModeIndex = 1 end
-        modeButton.Text = "Mode: " .. gameModes[currentModeIndex]
     end)
 
     if isMobile then
