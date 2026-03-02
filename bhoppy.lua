@@ -29,7 +29,7 @@ local lastFootstepIndex = 0
 -- config
 local cfg = {
     groundAccel = 50,
-    airAccel = 3200,
+    airAccel = 1200,
     maxAirSpeed = 20,
     runSpeed = 23,
     jumpPower = 32,
