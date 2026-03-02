@@ -96,8 +96,6 @@ end
 
 local isMobile = UserInputService.TouchEnabled and not UserInputService.KeyboardEnabled
 
-local currentModeIndex = 1
-
 -- GUI (Shortened for clarity, logic remains same as original)
 local function createGui()
     local g = Instance.new("ScreenGui", gui)
@@ -243,5 +241,3 @@ player.CharacterAdded:Connect(function(char)
     root = char:WaitForChild("HumanoidRootPart")
     jumpAnimTrack = humanoid:LoadAnimation(jumpAnim)
 end)
-
-print("Source Movement Loaded: Animation stops on land.")
