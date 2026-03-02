@@ -126,6 +126,9 @@ local function createGui()
         scriptEnabled = not scriptEnabled
         toggle.Text = scriptEnabled and "ON" or "OFF"
         toggle.BackgroundColor3 = scriptEnabled and Color3.fromRGB(80, 255, 130) or Color3.fromRGB(255, 60, 60)
+            if jumpButton then
+            jumpButton.Visible = scriptEnabled
+        end
     end)
 
     if isMobile then
