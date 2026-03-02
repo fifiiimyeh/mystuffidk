@@ -167,7 +167,11 @@ local function accel(wishDir, wishSpeed, accel, dt)
 end
 
 local function process(dt)
-    if not scriptEnabled then return end
+    if not scriptEnabled then
+        humanoid.WalkSpeed = 16
+        humanoid.JumpPower = 50
+    return
+    end
 
     humanoid.WalkSpeed = 0
     humanoid.JumpPower = 0
