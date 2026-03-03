@@ -38,8 +38,6 @@ local cfg = {
     stopSpeed = 5,
 }
 
-local rocketBlastRadius = 25
-
 local footstepSounds = {
     "rbxassetid://81623756670923",
     "rbxassetid://78754179999047",
@@ -122,22 +120,28 @@ local function createGui()
     toggle.BackgroundColor3 = Color3.fromRGB(80, 255, 130)
     toggle.Text = "ON"
 
-    toggle.MouseButton1Click:Connect(function()
-        scriptEnabled = not scriptEnabled
-        toggle.Text = scriptEnabled and "ON" or "OFF"
-        toggle.BackgroundColor3 = scriptEnabled and Color3.fromRGB(80, 255, 130) or Color3.fromRGB(255, 60, 60)
-    end)
-
+    local jumpButton = nil
     if isMobile then
-        -- Jump button for mobile logic
-        local jumpButton = Instance.new("TextButton", g)
+        jumpButton = Instance.new("TextButton", g)
         jumpButton.Size = UDim2.new(0, 80, 0, 80)
         jumpButton.Position = UDim2.new(1, -90, 1, -90)
         jumpButton.Text = "JUMP"
         jumpButton.Name = "JumpButton"
         jumpButton.MouseButton1Down:Connect(function() spaceHeld = true end)
-        jumpButton.MouseButton1Up:Connect(function() spaceHeld = false end)
-    end
+        jumpButton.MouseButton1Up:Connect(function() spaceHeld = false end)    end
+
+    toggle.MouseButton1Click:Connect(function()
+        scriptEnabled = not scriptEnabled
+        toggle.Text = scriptEnabled and "ON" or "OFF"
+        toggle.BackgroundColor3 = scriptEnabled and Color3.fromRGB(80, 255, 130) or Color3.fromRGB(255, 60, 60)
+        if not scriptEnabled then
+            humanoid.WalkSpeed = 16
+            humanoid.JumpPower = 50
+        end
+        if isMobile and jumpButton then
+            jumpButton.Visible = scriptEnabled
+        end
+    end)
 end
 
 createGui()
