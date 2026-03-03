@@ -5,8 +5,6 @@ local UserInputService = game:GetService("UserInputService")
 local player = Players.LocalPlayer
 local gui = player:WaitForChild("PlayerGui")
 
-local jumpButton
-
 local character = player.Character or player.CharacterAdded:Wait()
 local humanoid = character:WaitForChild("Humanoid")
 local root = character:WaitForChild("HumanoidRootPart")
@@ -128,9 +126,6 @@ local function createGui()
         scriptEnabled = not scriptEnabled
         toggle.Text = scriptEnabled and "ON" or "OFF"
         toggle.BackgroundColor3 = scriptEnabled and Color3.fromRGB(80, 255, 130) or Color3.fromRGB(255, 60, 60)
-            if jumpButton then
-            jumpButton.Visible = scriptEnabled
-        end
     end)
 
     if isMobile then
@@ -172,11 +167,7 @@ local function accel(wishDir, wishSpeed, accel, dt)
 end
 
 local function process(dt)
-    if not scriptEnabled then
-        humanoid.WalkSpeed = 16
-        humanoid.JumpPower = 50
-        return
-    end
+    if not scriptEnabled then return end
 
     humanoid.WalkSpeed = 0
     humanoid.JumpPower = 0
