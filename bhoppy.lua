@@ -146,11 +146,26 @@ local function createGui()
     modeButton.Text = "Mode: " .. currentModeIndex
     modeButton.TextScaled = true
     modeButton.Name = "ModeButton"
-    modeButton.MouseButton1Click:Connect(function()
-        currentModeIndex = currentModeIndex + 1
-        if currentModeIndex > #gameModes then currentModeIndex = 1 end
-        modeButton.Text = "Mode: " .. gameModes[currentModeIndex]
-    end)
+    modeButton.MouseButton1Click = (function()
+    currentModeIndex = currentModeIndex + 1
+    if currentModeIndex > #gameModes then
+        currentModeIndex = 1
+    end
+    local currentMode = gameModes[currentModeIndex]
+    modeButton.Text = "Mode: " .. currentMode
+
+    local g = gui:FindFirstChild("SourceDBG")
+    if g then
+        local grenadeButton = g:FindFirstChild("GrenadeButton")
+        if grenadeButton then
+            if string.find(currentMode, "no grenades") then
+                grenadeButton.Visible = false
+            else
+                grenadeButton.Visible = true
+            end
+        end
+    end
+end)
 
     if isMobile then
         local jumpButton = Instance.new("TextButton", g)
