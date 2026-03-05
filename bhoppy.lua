@@ -166,6 +166,7 @@ local function createGui()
 
     if isMobile then
         local jumpButton = Instance.new("TextButton", g)
+        jumpButton.Name = "JumpButton"
         jumpButton.Size = UDim2.new(0, 80, 0, 80)
         jumpButton.Position = UDim2.new(1, -90, 1, -150)
         jumpButton.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
@@ -176,6 +177,7 @@ local function createGui()
         jumpButton.InputEnded:Connect(function(io) if io.UserInputType == Enum.UserInputType.Touch then spaceHeld = false end end)
         
         local grenadeButton = Instance.new("TextButton", g)
+        grenadeButton.Name = "GrenadeButton"
         grenadeButton.Size = UDim2.new(0, 70, 0, 70)
         grenadeButton.Position = UDim2.new(1, -170, 1, -145)
         grenadeButton.BackgroundColor3 = Color3.fromRGB(255, 60, 60)
