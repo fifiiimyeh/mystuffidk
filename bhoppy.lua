@@ -1,4 +1,3 @@
--- Source Engine Movement for Roblox + ABH & Impulse Retention & Toggle Key (R)
 local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
 local UserInputService = game:GetService("UserInputService")
@@ -110,6 +109,15 @@ local function toggleScript()
         humanoid.WalkSpeed = 16
         humanoid.JumpPower = 50
         velocity = Vector3.new()
+        local jumpButton = gui:FindFirstChild("SourceDBG"):FindFirstChild("JumpButton")
+        local grenadeButton = gui:FindFirstChild("SourceDBG"):FindFirstChild("GrenadeButton")
+        if jumpButton then jumpButton.Visible = false end
+        if grenadeButton then grenadeButton.Visible = false end
+    else
+        local jumpButton = gui:FindFirstChild("SourceDBG"):FindFirstChild("JumpButton")
+        local grenadeButton = gui:FindFirstChild("SourceDBG"):FindFirstChild("GrenadeButton")
+        if jumpButton then jumpButton.Visible = true end
+        if grenadeButton then grenadeButton.Visible = true end
     end
 end
 
@@ -134,7 +142,7 @@ local function createGui()
     modeButton.Size = UDim2.new(0, 100, 0, 25)
     modeButton.Position = UDim2.new(1, -110, 0, 110)
     modeButton.BackgroundColor3 = Color3.fromRGB(100, 150, 255)
-    modeButton.Text = "Mode: " .. gameModes[currentModeIndex]
+    modeButton.Text = "Mode: " .. currentModeIndex
     modeButton.TextScaled = true
     modeButton.Name = "ModeButton"
     modeButton.MouseButton1Click:Connect(function()
