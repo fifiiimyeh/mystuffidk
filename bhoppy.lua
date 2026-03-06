@@ -22,7 +22,7 @@ local footstepTimer = 0
 local footstepInterval = 0.35
 local lastFootstepIndex = 0
 
--- ConfiguraciÃ³n
+-- Configs
 local cfg = {
     groundAccel = 10,
     airAccel = 1000, 
@@ -38,7 +38,7 @@ local cfg = {
 
 local rocketBlastRadius = 25
 
--- TABLA EXPANDIDA DE SONIDOS SOURCE (HL2 / CSS)
+-- SOURCE SOUNDS (HL2 / CSS)
 local footstepSounds = {
     Slate = {"rbxassetid://81623756670923", "rbxassetid://78754179999047", "rbxassetid://79418255155423", "rbxassetid://112240321395589"},
     Concrete = {"rbxassetid://81623756670923", "rbxassetid://78754179999047", "rbxassetid://79418255155423", "rbxassetid://112240321395589"},
