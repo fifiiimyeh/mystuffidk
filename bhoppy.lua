@@ -22,7 +22,7 @@ local footstepTimer = 0
 local footstepInterval = 0.35
 local lastFootstepIndex = 0
 
--- Configuración
+-- ConfiguraciÃ³n
 local cfg = {
     groundAccel = 10,
     airAccel = 1000, 
@@ -143,7 +143,7 @@ local function createGui()
     modeButton.Size = UDim2.new(0, 100, 0, 25)
     modeButton.Position = UDim2.new(1, -110, 0, 110)
     modeButton.BackgroundColor3 = Color3.fromRGB(100, 150, 255)
-    modeButton.Text = "Mode: " .. currentModeIndex
+    modeButton.Text = "Mode: " .. gameModes[currentModeIndex]
     modeButton.TextScaled = true
     modeButton.Name = "ModeButton"
     modeButton.MouseButton1Click:Connect(function()
